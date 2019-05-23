@@ -72,48 +72,48 @@
 				}]
 			}]
 		}, {
-			"value": "LOB3",
+			"name": "LOB3",
 			"children": [{
-				"value": "HEAD3",
+				"name": "HEAD3",
 				"children": [{
-					"value": "HEAD31",
+					"name": "HEAD31",
 					"children": [{
-						"value": "PROGRAM311",
+						"name": "PROGRAM311",
 						"children": [{
-							"value": "PROJECT3111",
+							"name": "PROJECT3111",
 							"children": []
 						}]
 					}]
 				}]
 			}]
 		}, {
-			"value": "LOB4",
+			"name": "LOB4",
 			"children": [{
-				"value": "HEAD1",
+				"name": "HEAD1",
 				"children": [{
-					"value": "HEAD14",
+					"name": "HEAD14",
 					"children": [{
-						"value": "PROGRAM141",
+						"name": "PROGRAM141",
 						"children": [{
-							"value": "PROJECT1411",
+							"name": "PROJECT1411",
 							"children": []
 						}]
 					}]
 				}, {
-					"value": "HEAD15",
+					"name": "HEAD15",
 					"children": [{
-						"value": "PROGRAM151",
+						"name": "PROGRAM151",
 						"children": [{
-							"value": "PROJECT1511",
+							"name": "PROJECT1511",
 							"children": []
 						}]
 					}]
 				}, {
-					"value": "HEAD16",
+					"name": "HEAD16",
 					"children": [{
-						"value": "PROGRAM161",
+						"name": "PROGRAM161",
 						"children": [{
-							"value": "PROJECT1611",
+							"name": "PROJECT1611",
 							"children": []
 						}]
 					}]
