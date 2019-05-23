@@ -1,71 +1,71 @@
 {
-	"value": null,
+	"name": null,
 	"children": [{
 		"value": "LOB",
-		"children": [{
-			"value": "LOB1",
+		"name": [{
+			"name": "LOB1",
 			"children": [{
-				"value": "HEAD1",
+				"name": "HEAD1",
 				"children": [{
-					"value": "HEAD11",
+					"name": "HEAD11",
 					"children": [{
-						"value": "PROGRAM111",
+						"name": "PROGRAM111",
 						"children": [{
-							"value": "PROJECT1111",
+							"name": "PROJECT1111",
 							"children": []
 						}]
 					}]
 				}, {
-					"value": "HEAD12",
+					"name": "HEAD12",
 					"children": [{
-						"value": "PROGRAM121",
+						"name": "PROGRAM121",
 						"children": [{
 							"value": "PROJECT1112",
 							"children": []
 						}]
 					}, {
-						"value": "PROGRAM122",
+						"name": "PROGRAM122",
 						"children": [{
 							"value": "PROJECT1212",
 							"children": []
 						}]
 					}]
 				}, {
-					"value": "HEAD13",
+					"name": "HEAD13",
 					"children": [{
-						"value": "PROGRAM131",
+						"name": "PROGRAM131",
 						"children": [{
-							"value": "PROJECT1311",
+							"name": "PROJECT1311",
 							"children": []
 						}, {
-							"value": "PROJECT1312",
+							"name": "PROJECT1312",
 							"children": []
 						}, {
-							"value": "PROJECT1313",
+							"name": "PROJECT1313",
 							"children": []
 						}]
 					}]
 				}]
 			}]
 		}, {
-			"value": "LOB2",
+			"name": "LOB2",
 			"children": [{
-				"value": "HEAD2",
+				"name": "HEAD2",
 				"children": [{
-					"value": "HEAD21",
+					"name": "HEAD21",
 					"children": [{
-						"value": "PROGRAM211",
+						"name": "PROGRAM211",
 						"children": [{
-							"value": "PROJECT2111",
+							"name": "PROJECT2111",
 							"children": []
 						}]
 					}]
 				}, {
-					"value": "HEAD22",
+					"name": "HEAD22",
 					"children": [{
-						"value": "PROGRAM221",
+						"name": "PROGRAM221",
 						"children": [{
-							"value": "PROJECT2211",
+							"name": "PROJECT2211",
 							"children": []
 						}]
 					}]
