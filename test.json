@@ -1,8 +1,8 @@
 {
 	"name": null,
 	"children": [{
-		"value": "LOB",
-		"name": [{
+		"name": "LOB",
+		"children": [{
 			"name": "LOB1",
 			"children": [{
 				"name": "HEAD1",
