@@ -1,0 +1,148 @@
+<script src="jquery_3.4.1_min.js"></script>
+<script src="jszip_0.8.0.js"></script>
+<script src="xlsx_0.8.0.js"></script>
+
+<script>
+
+var recursive=function(sheet,row,col,node,range){
+   if(row<=range.e.r && col<=range.e.c){
+	for(rowNum=row;rowNum<=range.e.r; rowNum++){
+          var cell = sheet[
+             XLSX.utils.encode_cell({r: rowNum, c: col})
+          ];
+	
+	   if(cell!=null){
+		var child={}
+		child.value=cell.v;
+		child.children=[];
+
+          var parentCell = sheet[
+             XLSX.utils.encode_cell({r: rowNum, c: col-1})
+          ];
+	
+		if(parentCell!=null && parentCell.v==node.value){
+			var ch=searchChildren(child,node.children)
+
+			if(typeof ch==='undefined'){
+		  	  node.children.push(child)
+		       recursive(sheet,rowNum,col+1,child,range)
+			}else{
+			     recursive(sheet,rowNum,col+1,ch,range)
+			}
+		}
+
+
+	     
+		//recursive(sheet,rowNum+1,col,child,range)
+
+		recursive(sheet,rowNum+1,col,node,range)
+	   }// if
+	
+	} // for
+  }
+}
+
+var searchChildren=function(nameKey, myArray){
+    for (var i=0; i < myArray.length; i++) {
+        if (myArray[i].value === nameKey.value) {
+            return myArray[i];
+        }
+    }
+}
+
+var sheet2arr = function(sheet){
+   var range = XLSX.utils.decode_range(sheet['!ref']);
+	var root={}
+	root.value=null;
+	root.children=[];
+
+	var i =0;
+     for(colNum=range.s.c; colNum<=range.e.c; colNum++){
+	// for(rowNum = range.s.r; rowNum <= range.e.r; rowNum++){
+	  if(i>range.e.r) break;
+     	  while(i<=range.e.r){
+            var cell = sheet[XLSX.utils.encode_cell({r: i, 			c:colNum})];
+          
+		if( typeof cell === 'undefined' ){
+             //row.push(void 0);
+		 
+          } else{
+		var mynode={}
+		mynode.value=cell.v
+		mynode.children=[]
+
+		var ch=searchChildren(mynode,root.children)
+		
+		var tempRowNum=i;
+		if(typeof ch==='undefined'){
+	  	 root.children.push(mynode)
+			recursive(sheet,tempRowNum,colNum+1,mynode,range)
+		}else{
+			recursive(sheet,tempRowNum,colNum+1,ch,range)
+
+		}
+
+	    }// else
+
+	   i++;
+	}// while
+
+   } // for
+	return root;
+};
+
+
+    var ExcelToJSON = function() {
+      this.parseExcel = function(file) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          var data = e.target.result;
+          var workbook = XLSX.read(data, {
+            type: 'binary'
+          });
+
+	
+	 var worksheet = workbook.Sheets['Sheet1']
+	 var hierarchyData=sheet2arr(worksheet);
+	 console.log("Conversion is Done..");
+	
+          workbook.SheetNames.forEach(function(sheetName) {
+      
+ //       var XL_row_object = //XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+          var json_object = JSON.stringify(hierarchyData);
+            //console.log(JSON.parse(json_object));
+            jQuery( '#xlx_json' ).val( json_object );
+          })
+        };
+
+        reader.onerror = function(ex) {
+          console.log(ex);
+        };
+
+        reader.readAsBinaryString(file);
+      };
+  };
+
+  function handleFileSelect(evt) {
+    
+    var files = evt.target.files; // FileList object
+    var xl2json = new ExcelToJSON();
+    xl2json.parseExcel(files[0]);
+  }
+
+
+ 
+</script>
+
+<form enctype="multipart/form-data">
+    <input id="upload" type=file  name="files[]">
+</form>
+
+    <textarea class="form-control" rows=35 cols=120 id="xlx_json"></textarea>
+
+    <script>
+        document.getElementById('upload').addEventListener('change', handleFileSelect, false);
+
+    </script>
+
